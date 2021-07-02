@@ -19,7 +19,6 @@ contract C {
 // SMTEngine: all
 // SMTIgnoreCex: yes
 // ----
-// Warning 4984: (113-116): CHC: Overflow (resulting value larger than 2**256 - 1) might happen here.
-// Warning 4984: (113-116): CHC: Overflow (resulting value larger than 2**256 - 1) might happen here.
 // Warning 6328: (156-170): CHC: Assertion violation happens here.
+// Warning 5840: CHC: 1 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.
 // Warning 2661: (113-116): BMC: Overflow (resulting value larger than 2**256 - 1) happens here.

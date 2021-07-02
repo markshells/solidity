@@ -35,5 +35,4 @@ contract C
 // Warning 6368: (367-386): CHC: Out of bounds access happens here.
 // Warning 6368: (497-511): CHC: Out of bounds access happens here.
 // Warning 6328: (860-880): CHC: Assertion violation happens here.
-// Warning 6368: (936-952): CHC: Out of bounds access might happen here.
-// Warning 6368: (936-955): CHC: Out of bounds access might happen here.
+// Warning 5840: CHC: 2 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.

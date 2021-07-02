@@ -25,14 +25,12 @@ contract C {
 // ====
 // SMTEngine: all
 // ----
+// Warning 1218: (702-732): CHC: Error trying to invoke SMT solver.
+// Warning 1218: (971-1001): CHC: Error trying to invoke SMT solver.
+// Warning 1218: (1086-1116): CHC: Error trying to invoke SMT solver.
 // Warning 6328: (334-364): CHC: Assertion violation happens here.
 // Warning 6328: (588-618): CHC: Assertion violation happens here.
-// Warning 1218: (702-732): CHC: Error trying to invoke SMT solver.
-// Warning 6328: (702-732): CHC: Assertion violation might happen here.
-// Warning 1218: (971-1001): CHC: Error trying to invoke SMT solver.
-// Warning 6328: (971-1001): CHC: Assertion violation might happen here.
-// Warning 1218: (1086-1116): CHC: Error trying to invoke SMT solver.
-// Warning 6328: (1086-1116): CHC: Assertion violation might happen here.
+// Warning 5840: CHC: 3 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.
 // Warning 4661: (702-732): BMC: Assertion violation happens here.
 // Warning 4661: (971-1001): BMC: Assertion violation happens here.
 // Warning 4661: (1086-1116): BMC: Assertion violation happens here.

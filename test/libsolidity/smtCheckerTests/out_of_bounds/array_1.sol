@@ -19,8 +19,7 @@ contract C {
 // ====
 // SMTEngine: all
 // ----
-// Warning 4984: (112-115): CHC: Overflow (resulting value larger than 2**256 - 1) might happen here.
-// Warning 3944: (181-184): CHC: Underflow (resulting value less than 0) might happen here.
 // Warning 6368: (259-263): CHC: Out of bounds access happens here.
+// Warning 5840: CHC: 2 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.
 // Warning 2661: (112-115): BMC: Overflow (resulting value larger than 2**256 - 1) happens here.
 // Warning 4144: (181-184): BMC: Underflow (resulting value less than 0) happens here.

@@ -27,8 +27,6 @@ contract C {
 // SMTEngine: all
 // ----
 // Warning 6368: (238-242): CHC: Out of bounds access happens here.
-// Warning 6368: (238-245): CHC: Out of bounds access might happen here.
-// Warning 6368: (238-248): CHC: Out of bounds access might happen here.
 // Warning 6368: (311-315): CHC: Out of bounds access happens here.
 // Warning 6368: (343-347): CHC: Out of bounds access happens here.
 // Warning 6328: (336-360): CHC: Assertion violation happens here.
@@ -36,3 +34,4 @@ contract C {
 // Warning 6368: (513-520): CHC: Out of bounds access happens here.
 // Warning 6368: (513-523): CHC: Out of bounds access happens here.
 // Warning 6328: (506-530): CHC: Assertion violation happens here.
+// Warning 5840: CHC: 2 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.

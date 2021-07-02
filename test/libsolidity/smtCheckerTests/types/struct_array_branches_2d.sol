@@ -16,5 +16,4 @@ contract C
 // ====
 // SMTEngine: all
 // ----
-// Warning 6368: (216-225): CHC: Out of bounds access might happen here.
-// Warning 6328: (209-230): CHC: Assertion violation might happen here.
+// Warning 5840: CHC: 2 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.

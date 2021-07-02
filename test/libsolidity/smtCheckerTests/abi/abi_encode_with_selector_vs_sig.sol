@@ -9,5 +9,5 @@ contract C {
 // ====
 // SMTEngine: all
 // ----
-// Warning 6328: (294-324): CHC: Assertion violation might happen here.
-// Warning 7812: (294-324): BMC: Assertion violation might happen here.
+// Warning 5840: CHC: 1 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.
+// Warning 2788: BMC: 1 verification condition(s) could not be proved. Enable the model checker option "show unproved" to see all of them. Consider choosing a specific contract to be verified in order to reduce the solving problems. Consider increasing the timeout per query.
