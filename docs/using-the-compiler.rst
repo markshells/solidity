@@ -406,7 +406,8 @@ Input Description
           "showUnproved": true,
           // Choose which targets should be checked: constantCondition,
           // underflow, overflow, divByZero, balance, assert, popEmptyArray, outOfBounds.
-          // If the option is not given all targets are checked by default.
+          // If the option is not given all targets are checked by default,
+          // except underflow/overflow for Solidity >=0.8.0.
           // See the Formal Verification section for the targets description.
           "targets": ["underflow", "overflow", "assert"],
           // Timeout for each SMT query in milliseconds.

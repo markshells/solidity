@@ -10,6 +10,7 @@ Compiler Features:
  * Yul Optimizer: Move function arguments and return variables to memory with the experimental Stack Limit Evader (which is not enabled by default).
  * Commandline Interface: option ``--pretty-json`` works also with ``--standard--json``.
  * SMTChecker: Unproved targets are hidden by default, and the SMTChecker only states how many unproved targets there are. They can be listed using the CLI option ``--model-checker-show-unproved`` and the JSON option ``settings.modelChecker.showUnproved``.
+ * SMTChecker: Do not check undeflow and overflow by default if the compiler version is >=0.8.0.
 
 
 Bugfixes:
