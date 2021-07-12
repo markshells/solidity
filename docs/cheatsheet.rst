@@ -84,6 +84,7 @@ Global Variables
   to ``abi.encodeWithSelector(bytes4(keccak256(bytes(signature)), ...)```
 - ``bytes.concat(...) returns (bytes memory)``: :ref:`Concatenates variable number of
   arguments to one byte array<bytes-concat>`
+- ``block.basefee`` (``uint``): current block's base fee (EIP-3198 and EIP-1559)
 - ``block.chainid`` (``uint``): current chain id
 - ``block.coinbase`` (``address payable``): current block miner's address
 - ``block.difficulty`` (``uint``): current block difficulty
