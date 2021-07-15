@@ -86,6 +86,7 @@ static string const g_strMetadata = "metadata";
 static string const g_strMetadataHash = "metadata-hash";
 static string const g_strMetadataLiteral = "metadata-literal";
 static string const g_strModelCheckerContracts = "model-checker-contracts";
+static string const g_strModelCheckerDivModSlacks = "model-checker-div-mod-slacks";
 static string const g_strModelCheckerEngine = "model-checker-engine";
 static string const g_strModelCheckerShowUnproved = "model-checker-show-unproved";
 static string const g_strModelCheckerSolvers = "model-checker-solvers";
@@ -721,6 +722,12 @@ General Information)").c_str(),
 			"and no spaces."
 		)
 		(
+			g_strModelCheckerDivModSlacks.c_str(),
+			po::value<bool>()->default_value(true),
+			"Select whether to replace division and modulo operations"
+			" by multiplication with slack variables."
+		)
+		(
 			g_strModelCheckerEngine.c_str(),
 			po::value<string>()->value_name("all,bmc,chc,none")->default_value("none"),
 			"Select model checker engine."
@@ -1092,6 +1099,12 @@ General Information)").c_str(),
 		m_options.modelChecker.settings.contracts = move(*contracts);
 	}
 
+	if (m_args.count(g_strModelCheckerDivModSlacks))
+	{
+		bool divModSlacks = m_args[g_strModelCheckerDivModSlacks].as<bool>();
+		m_options.modelChecker.settings.divModWithSlacks = divModSlacks;
+	}
+
 	if (m_args.count(g_strModelCheckerEngine))
 	{
 		string engineStr = m_args[g_strModelCheckerEngine].as<string>();
@@ -1140,6 +1153,7 @@ General Information)").c_str(),
 	m_options.metadata.literalSources = (m_args.count(g_strMetadataLiteral) > 0);
 	m_options.modelChecker.initialize =
 		m_args.count(g_strModelCheckerContracts) ||
+		m_args.count(g_strModelCheckerDivModSlacks) ||
 		m_args.count(g_strModelCheckerEngine) ||
 		m_args.count(g_strModelCheckerShowUnproved) ||
 		m_args.count(g_strModelCheckerSolvers) ||

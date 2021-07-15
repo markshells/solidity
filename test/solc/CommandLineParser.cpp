@@ -81,6 +81,7 @@ BOOST_AUTO_TEST_CASE(no_options)
 	expectedOptions.modelChecker.initialize = true;
 	expectedOptions.modelChecker.settings = {
 		ModelCheckerContracts::Default(),
+		/*divModWithSlacks*/true,
 		ModelCheckerEngine::None(),
 		false,
 		smtutil::SMTSolverChoice::All(),
@@ -151,6 +152,7 @@ BOOST_AUTO_TEST_CASE(cli_mode_options)
 			"--optimize-runs=1000",
 			"--yul-optimizations=agf",
 			"--model-checker-contracts=contract1.yul:A,contract2.yul:B",
+			"--model-checker-div-mod-slacks=false",
 			"--model-checker-engine=bmc",
 			"--model-checker-show-unproved=true",
 			"--model-checker-solvers=z3,smtlib2",
@@ -210,6 +212,7 @@ BOOST_AUTO_TEST_CASE(cli_mode_options)
 		expectedOptions.modelChecker.initialize = true;
 		expectedOptions.modelChecker.settings = {
 			{{{"contract1.yul", {"A"}}, {"contract2.yul", {"B"}}}},
+			false,
 			{true, false},
 			true,
 			{false, true, true},
@@ -281,6 +284,7 @@ BOOST_AUTO_TEST_CASE(assembly_mode_options)
 			"--model-checker-contracts="   // Ignored in assembly mode
 				"contract1.yul:A,"
 				"contract2.yul:B",
+			"--model-checker-div-mod-slacks=false", // Ignored in assembly mode
 			"--model-checker-engine=bmc",  // Ignored in assembly mode
 			"--model-checker-show-unproved=true", // Ignored in assembly mode
 			"--model-checker-solvers=z3,smtlib2", // Ignored in assembly mode
@@ -380,6 +384,7 @@ BOOST_AUTO_TEST_CASE(standard_json_mode_options)
 		"--model-checker-contracts="       // Ignored in Standard JSON mode
 			"contract1.yul:A,"
 			"contract2.yul:B",
+		"--model-checker-div-mod-slacks=false", // Ignored in Standard JSON mode
 		"--model-checker-engine=bmc",      // Ignored in Standard JSON mode
 		"--model-checker-show-unproved=true",      // Ignored in Standard JSON mode
 		"--model-checker-solvers=z3,smtlib2", // Ignored in Standard JSON mode

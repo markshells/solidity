@@ -112,6 +112,13 @@ struct ModelCheckerTargets
 struct ModelCheckerSettings
 {
 	ModelCheckerContracts contracts = ModelCheckerContracts::Default();
+	/// Currently division and modulo are replaced by multiplication with slack vars, such that
+	/// a / b <=> a = b * k + m
+	/// where k and m are slack variables.
+	/// This is the default because Spacer prefers that over precise / and mod.
+	/// This option allows disabling this mechanism since other solvers
+	/// might prefer the precise encoding.
+	bool divModWithSlacks = true;
 	ModelCheckerEngine engine = ModelCheckerEngine::None();
 	bool showUnproved = false;
 	smtutil::SMTSolverChoice solvers = smtutil::SMTSolverChoice::All();
