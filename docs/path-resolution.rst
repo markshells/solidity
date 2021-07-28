@@ -398,7 +398,7 @@ importing files from the following directories:
 
 .. note::
 
-    The working directory of the compiler is not one of the allowed paths by default unless it
+    The working directory of the compiler is one of the paths allowed by default only if it
     happens to be the base path (or the base path is not specified or has an empty value).
 
 .. note::
