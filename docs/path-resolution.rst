@@ -407,6 +407,12 @@ importing files from the following directories:
     Non-existent or empty paths are simply ignored.
     If an allowed path matches a file rather than a directory, the file is considered whitelisted too.
 
+.. note::
+
+    Allowed paths are case-sensitive even if the filesystem is not.
+    The case must exactly match the one used in your imports.
+    For example ``--allow-paths tokens`` will not match ``import "Tokens/IERC20.sol"``.
+
 .. warning::
 
     Files and directories only reachable through symbolic links from allowed directories are not
