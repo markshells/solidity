@@ -299,12 +299,11 @@ BOOST_FIXTURE_TEST_CASE(allow_path_should_handle_empty_paths, AllowPathsFixture)
 
 BOOST_FIXTURE_TEST_CASE(allow_path_case_sensitive, AllowPathsFixture)
 {
-	string import = "import '" + m_portablePrefix + "/a/b/c.sol'";
-
-	if (m_caseSensitiveFilesystem)
-		BOOST_TEST(checkImport(import, {"--allow-paths", m_codeDir.string() + "/A/B/"}) == ImportCheck::PathDisallowed());
-	else
-		BOOST_TEST(checkImport(import, {"--allow-paths", m_codeDir.string() + "/A/B/"}));
+	// Allowed paths are case-sensitive even on case-insensitive filesystems
+	BOOST_TEST(
+		checkImport("import '" + m_portablePrefix + "/a/b/c.sol'", {"--allow-paths", m_codeDir.string() + "/A/B/"}) ==
+		ImportCheck::PathDisallowed()
+	);
 }
 
 BOOST_FIXTURE_TEST_CASE(allow_path_should_work_with_various_import_forms, AllowPathsFixture)
