@@ -266,7 +266,7 @@ BOOST_AUTO_TEST_CASE(normalizeCLIPathForVFS_case_sensitivity)
 	{
 		cout << "normalizeCLIPathForVFS_case_sensitivity" << endl;
 		cout << "resolveSymlinks: " << (resolveSymlinks ? "true" : "false") << endl;
-		cout << "ACTUAL:   " << FileReader::normalizeCLIPathForVFS(tempDir.path() / "abc", resolveSymlinks) << endl;
+		cout << "ACTUAL:   " << FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "abc", resolveSymlinks) << endl;
 		cout << "EXPECTED: " << expectedPrefix / "abc" << endl;
 		BOOST_TEST(FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "abc", resolveSymlinks) == expectedPrefix / "abc");
 		BOOST_TEST(FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "abc", resolveSymlinks) != expectedPrefix / "ABC");
