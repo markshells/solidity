@@ -259,8 +259,8 @@ BOOST_AUTO_TEST_CASE(normalizeCLIPathForVFS_case_sensitivity)
 	TemporaryDirectory tempDir(TEST_CASE_NAME);
 	TemporaryWorkingDirectory tempWorkDir(tempDir);
 
-	boost::filesystem::path expectedPrefix = "/" / tempDir.path().relative_path();
-	soltestAssert(expectedPrefix.is_absolute() || expectedPrefix.root_path() == "/", "");
+	boost::filesystem::path workDirNoSymlinks = boost::filesystem::weakly_canonical(tempDir);
+	boost::filesystem::path expectedPrefix = "/" / workDirNoSymlinks.relative_path();
 
 	for (bool resolveSymlinks: {false, true})
 	{
@@ -268,10 +268,10 @@ BOOST_AUTO_TEST_CASE(normalizeCLIPathForVFS_case_sensitivity)
 		cout << "resolveSymlinks: " << (resolveSymlinks ? "true" : "false") << endl;
 		cout << "ACTUAL:   " << FileReader::normalizeCLIPathForVFS(tempDir.path() / "abc", resolveSymlinks) << endl;
 		cout << "EXPECTED: " << expectedPrefix / "abc" << endl;
-		BOOST_TEST(FileReader::normalizeCLIPathForVFS(tempDir.path() / "abc", resolveSymlinks) == expectedPrefix / "abc");
-		BOOST_TEST(FileReader::normalizeCLIPathForVFS(tempDir.path() / "abc", resolveSymlinks) != expectedPrefix / "ABC");
-		BOOST_TEST(FileReader::normalizeCLIPathForVFS(tempDir.path() / "ABC", resolveSymlinks) != expectedPrefix / "abc");
-		BOOST_TEST(FileReader::normalizeCLIPathForVFS(tempDir.path() / "ABC", resolveSymlinks) == expectedPrefix / "ABC");
+		BOOST_TEST(FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "abc", resolveSymlinks) == expectedPrefix / "abc");
+		BOOST_TEST(FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "abc", resolveSymlinks) != expectedPrefix / "ABC");
+		BOOST_TEST(FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "ABC", resolveSymlinks) != expectedPrefix / "abc");
+		BOOST_TEST(FileReader::normalizeCLIPathForVFS(workDirNoSymlinks / "ABC", resolveSymlinks) == expectedPrefix / "ABC");
 	}
 }
 
