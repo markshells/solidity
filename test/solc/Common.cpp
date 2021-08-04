@@ -61,14 +61,8 @@ CommandLineOptions test::defaultCommandLineOptions()
 {
 	CommandLineOptions options;
 
-	options.optimizer.expectedExecutionsPerDeployment = 200;
 	options.modelChecker.initialize = true;
-	options.modelChecker.settings = {
-		ModelCheckerContracts::Default(),
-		ModelCheckerEngine::None(),
-		ModelCheckerTargets::Default(),
-		nullopt,
-	};
+	options.modelChecker.settings = {};
 
 	return options;
 }
