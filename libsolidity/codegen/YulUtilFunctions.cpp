@@ -445,11 +445,16 @@ string YulUtilFunctions::typedShiftLeftFunction(Type const& _type, Type const& _
 			Whiskers(R"(
 			function <functionName>(value, bits) -> result {
 				bits := <cleanAmount>(bits)
-				result := <cleanup>(<shift>(bits, value))
+				<?leftAligned>
+					result := <shift>(bits, <cleanup>(value))
+				<!leftAligned>
+					result := <cleanup>(<shift>(bits, value))
+				</leftAligned>
 			}
 			)")
 			("functionName", functionName)
 			("cleanAmount", cleanupFunction(_amountType))
+			("leftAligned", _type.category() == Type::Category::FixedBytes)
 			("shift", shiftLeftFunctionDynamic())
 			("cleanup", cleanupFunction(_type))
 			.render();
