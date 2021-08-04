@@ -169,7 +169,7 @@ boost::filesystem::path FileReader::normalizeCLIPathForVFS(boost::filesystem::pa
 	return normalizedPathNoDotDot;
 }
 
-bool FileReader::isPathPrefix(boost::filesystem::path _prefix, boost::filesystem::path const& _path)
+bool FileReader::isPathPrefix(boost::filesystem::path const& _prefix, boost::filesystem::path const& _path)
 {
 	solAssert(!_prefix.empty() && !_path.empty(), "");
 	// NOTE: On Windows paths starting with a slash (rather than a drive letter) are considered relative by boost.
@@ -178,25 +178,23 @@ bool FileReader::isPathPrefix(boost::filesystem::path _prefix, boost::filesystem
 	solAssert(_prefix == _prefix.lexically_normal() && _path == _path.lexically_normal(), "");
 	solAssert(!hasDotDotSegments(_prefix) && !hasDotDotSegments(_path), "");
 
-	// Before 1.72.0 lexically_relative() was not handling paths with empty, dot and dot dot segments
-	// correctly (see https://github.com/boostorg/filesystem/issues/76). The only case where this
-	// is possible after our normalization is a directory name ending in a slash (filename is a dot).
-	if (_prefix.filename_is_dot())
-		_prefix.remove_filename();
-
-	boost::filesystem::path strippedPath = _path.lexically_relative(_prefix);
+	boost::filesystem::path strippedPath = _path.lexically_relative(
+		// Before 1.72.0 lexically_relative() was not handling paths with empty, dot and dot dot segments
+		// correctly (see https://github.com/boostorg/filesystem/issues/76). The only case where this
+		// is possible after our normalization is a directory name ending in a slash (filename is a dot).
+		_prefix.filename_is_dot() ? _prefix.parent_path() : _prefix
+	);
 	return !strippedPath.empty() && *strippedPath.begin() != "..";
 }
 
-boost::filesystem::path FileReader::stripPrefixIfPresent(boost::filesystem::path _prefix, boost::filesystem::path const& _path)
+boost::filesystem::path FileReader::stripPrefixIfPresent(boost::filesystem::path const& _prefix, boost::filesystem::path const& _path)
 {
 	if (!isPathPrefix(_prefix, _path))
 		return _path;
 
-	if (_prefix.filename_is_dot())
-		_prefix.remove_filename();
-
-	boost::filesystem::path strippedPath = _path.lexically_relative(_prefix);
+	boost::filesystem::path strippedPath = _path.lexically_relative(
+		_prefix.filename_is_dot() ? _prefix.parent_path() : _prefix
+	);
 	solAssert(strippedPath.empty() || *strippedPath.begin() != "..", "");
 	return strippedPath;
 }
