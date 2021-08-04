@@ -40,13 +40,19 @@ contract C {
 }
 // ----
 // DeclarationError 4113: (105-136): The identifier name "this" is reserved.
+// DeclarationError 3859: (105-136): This declaration shadows a declaration outside the inline assembly block.
 // DeclarationError 4113: (149-181): The identifier name "super" is reserved.
+// DeclarationError 3859: (149-181): This declaration shadows a declaration outside the inline assembly block.
 // DeclarationError 4113: (194-222): The identifier name "_" is reserved.
 // DeclarationError 4113: (323-327): The identifier name "this" is reserved.
+// DeclarationError 3859: (323-327): This declaration shadows a declaration outside the inline assembly block.
 // DeclarationError 4113: (368-373): The identifier name "super" is reserved.
+// DeclarationError 3859: (368-373): This declaration shadows a declaration outside the inline assembly block.
 // DeclarationError 4113: (414-415): The identifier name "_" is reserved.
 // DeclarationError 4113: (546-550): The identifier name "this" is reserved.
+// DeclarationError 3859: (546-550): This declaration shadows a declaration outside the inline assembly block.
 // DeclarationError 4113: (595-600): The identifier name "super" is reserved.
+// DeclarationError 3859: (595-600): This declaration shadows a declaration outside the inline assembly block.
 // DeclarationError 4113: (645-646): The identifier name "_" is reserved.
 // DeclarationError 4113: (759-763): The identifier name "this" is reserved.
 // DeclarationError 3859: (759-763): This declaration shadows a declaration outside the inline assembly block.

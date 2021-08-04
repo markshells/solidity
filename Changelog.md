@@ -17,6 +17,7 @@ Bugfixes:
  * Code Generator: Fix internal compiler error when passing a 32-byte hex literal or a zero literal to ``bytes.concat()`` by disallowing such literals.
  * Commandline Interface: Fix crash when a directory path is passed to ``--standard-json``.
  * Commandline Interface: Read JSON from standard input when ``--standard-json`` gets ``-`` as a file name.
+ * Inline Assembly: Consider functions, function parameters and return variables for shadowing checks.
  * Standard JSON: Include source location for errors in files with empty name.
  * Type Checker: Fix internal error and prevent static calls to unimplemented modifiers.
  * Yul Code Generator: Fix internal compiler error when using a long literal with bitwise negation.
